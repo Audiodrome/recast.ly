@@ -2,10 +2,22 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    //this.video = videoListEntry.onTitleClick;
+    this.changeVideo = this.changeVideo.bind(this);
+    this.state = {
+      currVideo: this.props.videos[0],
+      videos: this.props.videos
+    };
+  }
+
+  changeVideo(video) {
+    console.log(video, 'changed video');
+    this.setState({currVideo: video});
   }
 
   render () {
     console.log(this.props);
+    
     return (
       <div>
         <nav className="navbar">
@@ -15,10 +27,11 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><VideoPlayer videos={this.props.videos[0]}/></div>
+            <div><VideoPlayer video={this.state.currVideo}/></div>
           </div>
           <div className="col-md-5">
-            <div><VideoList videos={this.props.videos}/></div>
+            <div><VideoList videos={this.state.videos}  
+                            videoClick={this.changeVideo} /></div>
           </div>
         </div>
       </div>

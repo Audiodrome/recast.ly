@@ -1,11 +1,11 @@
-var VideoPlayer = (props) => (
+var VideoPlayer = ({video}) => (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/4ZAEBxGipoA" allowFullScreen></iframe>
+      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${video.id.videoId}`} allowFullScreen></iframe>
     </div>
     <div className="video-player-details">
-      <h3>{props.videos.snippet.title}</h3>
-      <div>{props.videos.snippet.description}</div>
+      <h3>{video.snippet.title}</h3>
+      <div>{video.snippet.description}</div>
     </div>
   </div>
 );
@@ -20,4 +20,5 @@ VideoPlayer.propTypes = {
 // `var` declarations will only exist globally where explicitly defined
 window.VideoPlayer = VideoPlayer;
 
-// src="https://www.youtube.com/embed/" + ${props.videos.id.videoid}
+// src="https://www.youtube.com/embed/" + ${props.videos.id.videoId}
+// src="https://www.youtube.com/embed/4ZAEBxGipoA"
